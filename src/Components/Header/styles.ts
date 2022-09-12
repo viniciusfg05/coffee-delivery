@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const HeaderContainerStyled = styled.header`
     width: 90rem;
     height: 6.50rem;
-    margin: 0 auto; 
+    margin: 0 auto;
+    
 
     nav {
         width: 70rem;

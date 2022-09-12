@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import background from '../../assets/background.svg'
 
 export const MainContainerStyled = styled.main`
-    width: 70rem;
-    height: 22.5rem;
+    max-width: 70rem;
+    /* height: 22.5rem; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 0 auto;
@@ -42,11 +42,17 @@ export const MainContainerStyled = styled.main`
 
     }
 
-    img {
-            width: 100%;
-            margin-right: 0;
+    section:last-child{
+        margin: 0;
+        display: flex;
+        width: 29.75rem;
+
+
+        img {
+            flex: 1;
             display: flex;
-            justify-content: flex-end;
+            justify-content: end;
+    }
     }
 `
 
@@ -71,4 +77,106 @@ export const LiContentStyled = styled.i<PropsColor>`
     display: flex;
     justify-content: center;
     align-items: center;
+`
+export const BackgroudImageStyled = styled.div`
+    width: 90rem;
+    height: 34rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6.50rem;
+    bottom: 0;
+    margin: 0 auto;
+`
+
+export const ListCoffeeContainerStyled = styled.div`
+    max-width: 70rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+
+`
+
+export const ListCoffeeContenteStyled = styled.div`
+    width: 16rem;
+    height: 19.375rem;
+    border-top-right-radius: 36px;
+    background: ${(props) => props.theme['base-card']};
+
+    header {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        img {
+        width: 7.5rem;
+        height: 7.5rem;
+        }
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.25rem;
+
+        p {
+            font-family: 'Baloo 2', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        span {
+            font-size: 0.875rem;
+            color: ${(props) => props.theme['base-label']};
+            text-align: center;
+        }
+    }
+
+    footer {
+        padding: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+    }
+`
+
+export const ButtonAddeRemoveContentStyled = styled.div`
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+        border: none;
+        background: ${(props) => props.theme['base-button']};
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        width: 4.5rem;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        font-size: 1rem;
+        align-items: center;
+        border-radius: 5px;
+    }
+    
+    i {
+        background: ${(props) => props.theme['purple']};
+        display: flex;
+        width: 2.375rem;
+        height: 2.375rem;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+
+`
+
+export const ButtonAddeRemoveItemStyled = styled.div`
+
+
+    button {
+        border: none;
+        background-color: transparent;
+    }
 `
