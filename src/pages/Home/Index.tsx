@@ -2,13 +2,46 @@ import { Coffee, Minus, NumberOne, Package, Plus, ShoppingCart, Timer } from "ph
 import cofferBanner from '../../assets/cofferBanner.svg'
 import background from '../../assets/background.svg'
 import expressTradicional from '../../assets/expressTradicional.svg'
-import { BackgroudImageStyled, ButtonAddeRemoveContentStyled, ButtonAddeRemoveItemStyled, LiContentStyled, ListCoffeeContainerStyled, ListCoffeeContenteStyled, MainContainerStyled } from "./styles";
+import { BackgroudImageStyled, ButtonAddeRemoveContentStyled, ButtonAddeRemoveItemStyled, ContainerCoffeeStyled, LiContentStyled, ListCoffeeContainerStyled, ListCoffeeContenteStyled, MainContainerStyled } from "./styles";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+
+interface CoffeeProps {
+  id: number,
+  image: string,
+  name: string,
+  description: string,
+  amount: string
+}
+
+
 
 export function Home() {
+  const [ cooffee, setCoffee ] = useState<CoffeeProps[]>([])
+
+  try {
+  } catch (error) {
+    console.log(error)
+  }
+
+
+  
+  console.log(cooffee)
+  useEffect(() => {
+    const fetchData = async () => {
+      await api.get('coffees') //rota possivelmente criariamos no futuro
+      .then(response => setCoffee(response.data.coffees)) //console .log nos dados
+    }
+
+    fetchData()
+
+  }, [])
+
   return (
     <>
       <BackgroudImageStyled style={{backgroundImage: `url(${background})`} }  />
       <MainContainerStyled >
+
         <section>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>
           <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
@@ -46,20 +79,31 @@ export function Home() {
         </section>
       </MainContainerStyled>
 
-      <ListCoffeeContainerStyled>
+      <ContainerCoffeeStyled>
+        <h1>Nossos cafés</h1>
+
+        <ListCoffeeContainerStyled>
+        
+
+        { cooffee.map(coffee => (
+
+        
         <ListCoffeeContenteStyled>
           <header>
-            <img src={expressTradicional} alt="Café expresso tradicional" />
+            <img src={coffee.image} alt="Café expresso tradicional" />
             <span>Tradicional</span>
           </header>
 
           <section>
-            <p>Expresso Tradicional</p>
-            <span>O tradicional café feito com água quente e grãos moídos</span>
+            <p>{coffee.name}</p>
+            <span>{coffee.description}</span>
           </section>
 
           <footer>
-            <p>R$ 9,90</p>
+            <aside>
+              <span>R$</span>
+              <p>{coffee.amount}</p>
+            </aside>
 
           <ButtonAddeRemoveContentStyled>
             
@@ -80,7 +124,15 @@ export function Home() {
 
 
         </ListCoffeeContenteStyled>
+        )) }
+
+
+
       </ListCoffeeContainerStyled>
+
+      </ContainerCoffeeStyled>
+
+
     </>
     
   )

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { RouterProvider } from './Router'
@@ -8,15 +8,16 @@ import { GlobalStyles } from './Styles/Global'
 import { defaultTheme } from './Styles/Theme/Default'
 import './services/mirage/index.ts'
 
- 
+interface CoffeeProps {
+  id: number,
+  Image: string,
+  name: string,
+  description: string,
+  amount: number
+}
+
 
 function App() {
-
-  useEffect(() => {
-    api.get('coffees') //rota possivelmente criariamos no futuro
-    .then(response => console.log(response.data)) //console .log nos dados
-  }, [])
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>

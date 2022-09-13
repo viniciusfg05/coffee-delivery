@@ -89,11 +89,27 @@ export const BackgroudImageStyled = styled.div`
     margin: 0 auto;
 `
 
+export const ContainerCoffeeStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    
+    
+    h1 {
+        max-width: 70rem;
+
+        display: flex;
+        justify-content: flex-start;
+        margin: 8.75rem auto 3.75rem auto;
+        width: 100%;
+    }
+`
+
 export const ListCoffeeContainerStyled = styled.div`
     max-width: 70rem;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
 
 `
 
@@ -139,6 +155,22 @@ export const ListCoffeeContenteStyled = styled.div`
         padding: 1.25rem;
         display: flex;
         justify-content: space-between;
+
+        aside {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+
+            span {
+                font-size: 0.875rem;
+                font-family: 'Roboto', sans-serif;
+            }
+            p {
+                font-family: 'Baloo 2', sans-serif;
+                font-weight: 700;
+                font-size: 1.5rem;
+            }
+        }
     }
 `
 
