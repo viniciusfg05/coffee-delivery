@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "services/mirage", "services/mirage", "services/mirage"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
