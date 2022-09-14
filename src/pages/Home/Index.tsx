@@ -12,21 +12,16 @@ interface CoffeeProps {
   name: string,
   description: string,
   amount: string
+  itemAmount: string | undefined,
 }
 
 
 
 export function Home() {
-  const [ cooffee, setCoffee ] = useState<CoffeeProps[]>([])
-
-  try {
-  } catch (error) {
-    console.log(error)
-  }
-
-
+  const [ coffee, setCoffee ] = useState<CoffeeProps[]>([])
+  console.log(coffee)
+  const [ amountItens, setAmountItens ] = useState(0)
   
-  console.log(cooffee)
   useEffect(() => {
     const fetchData = async () => {
       await api.get('coffees') //rota possivelmente criariamos no futuro
@@ -36,6 +31,18 @@ export function Home() {
     fetchData()
 
   }, [])
+
+  async function handleAddItenCard(id: number) {
+    const findIdIten = coffee.find(find => find.id === id);
+    const updateAmount = [...coffee]
+
+    const newCoffee: CoffeeProps = {
+      ...findIdIten,
+      itemAmount: '1'
+    }
+
+    setCoffee((state) => [...state, newCoffee])
+  }
 
   return (
     <>
@@ -84,50 +91,43 @@ export function Home() {
 
         <ListCoffeeContainerStyled>
         
+        { coffee.map(coffee => (
+          <ListCoffeeContenteStyled>
+            <header>
+              <img src={coffee.image} alt="Café expresso tradicional" />
+              <span>Tradicional</span>
+            </header>
 
-        { cooffee.map(coffee => (
+            <section>
+              <p>{coffee.name}</p>
+              <span>{coffee.description}</span>
+            </section>
 
-        
-        <ListCoffeeContenteStyled>
-          <header>
-            <img src={coffee.image} alt="Café expresso tradicional" />
-            <span>Tradicional</span>
-          </header>
+            <footer>
+              <aside>
+                <span>R$</span>
+                <p>{coffee.amount}</p>
+              </aside>
 
-          <section>
-            <p>{coffee.name}</p>
-            <span>{coffee.description}</span>
-          </section>
+            <ButtonAddeRemoveContentStyled>
 
-          <footer>
-            <aside>
-              <span>R$</span>
-              <p>{coffee.amount}</p>
-            </aside>
+              <button 
+                type="button"
+                onClick={() => {handleAddItenCard(coffee.id)}}
+              >
+                <Minus size={16} color={'#8047F8'} />
+                <p>{amountItens}</p>
+                <Plus size={16} color={'#8047F8'} />
+              </button>
 
-          <ButtonAddeRemoveContentStyled>
-            
-            <button>
-              <Minus size={16} color={'#8047F8'} />
-              <NumberOne size={16} />
-              <Plus size={16} color={'#8047F8'} />
+              <i>
+                <ShoppingCart weight="fill" color={'White'}/>
+              </i>
+            </ButtonAddeRemoveContentStyled>
 
-            </button>
-
-            <i>
-              <ShoppingCart weight="fill" color={'White'}/>
-            </i>
-          </ButtonAddeRemoveContentStyled>
-
-          </footer>
-
-
-
-        </ListCoffeeContenteStyled>
+            </footer>
+          </ListCoffeeContenteStyled>
         )) }
-
-
-
       </ListCoffeeContainerStyled>
 
       </ContainerCoffeeStyled>

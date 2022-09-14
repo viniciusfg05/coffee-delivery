@@ -101,6 +101,8 @@ export const ContainerCoffeeStyled = styled.div`
         justify-content: flex-start;
         margin: 8.75rem auto 3.75rem auto;
         width: 100%;
+        color: ${(props) => props.theme['base-subtitle']};
+        font-family: 'Baloo 2', sans-serif;
     }
 `
 
@@ -169,6 +171,8 @@ export const ListCoffeeContenteStyled = styled.div`
                 font-family: 'Baloo 2', sans-serif;
                 font-weight: 700;
                 font-size: 1.5rem;
+                color: ${(props) => props.theme['base-text']};
+
             }
         }
     }
@@ -190,6 +194,7 @@ export const ButtonAddeRemoveContentStyled = styled.div`
         font-size: 1rem;
         align-items: center;
         border-radius: 5px;
+        cursor: pointer;
     }
     
     i {
