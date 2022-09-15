@@ -119,18 +119,30 @@ export const ListCoffeeContenteStyled = styled.div`
     width: 16rem;
     height: 19.375rem;
     border-top-right-radius: 36px;
+    border-bottom-left-radius: 36px;
     background: ${(props) => props.theme['base-card']};
 
     header {
         display: flex;
         flex-direction: column;
-
+        margin-top: -1.25rem;
         justify-content: center;
         align-items: center;
 
         img {
         width: 7.5rem;
         height: 7.5rem;
+        }
+
+        span {
+            margin-top: 1rem;
+            font-size: 0.625rem;
+            padding: 0.25rem 0.5rem;
+            background: ${(props) => props.theme['yellow-light']};
+            color: ${(props) => props.theme['yellow-dark']};
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
         }
     }
 
@@ -154,9 +166,10 @@ export const ListCoffeeContenteStyled = styled.div`
     }
 
     footer {
-        padding: 1.25rem;
+        padding: 0 1.25rem;
         display: flex;
         justify-content: space-between;
+        margin-top: 0.8125rem;
 
         aside {
             display: flex;
@@ -195,10 +208,12 @@ export const ButtonAddeRemoveContentStyled = styled.div`
         align-items: center;
         border-radius: 5px;
         cursor: pointer;
+
+        
     }
     
     i {
-        background: ${(props) => props.theme['purple']};
+        background: ${(props) => props.theme['purple-dark']};
         display: flex;
         width: 2.375rem;
         height: 2.375rem;
