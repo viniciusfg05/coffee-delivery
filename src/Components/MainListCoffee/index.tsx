@@ -1,7 +1,8 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ButtonAddeRemoveContentStyled, ContainerCoffeeStyled, ListCoffeeContainerStyled, ListCoffeeContenteStyled } from "./styles";
 import { api } from "../../services/api";
+import { CoffeeContext } from "../../context/CoffeeContext";
 
 interface CoffeeProps {
   id: number,
@@ -14,6 +15,10 @@ interface CoffeeProps {
 
 
 export function MainListCoffee() {
+  const {ola} = useContext<any>(CoffeeContext)
+
+  console.log(ola)
+
   const [ coffeeData, setCoffee ] = useState<CoffeeProps[]>([])
 
   useEffect(() => {
