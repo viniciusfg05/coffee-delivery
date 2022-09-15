@@ -23,6 +23,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Expresso Tradicional",
             description: "O tradicional café feito com água quente e grãos moídos",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 2,
@@ -30,6 +31,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Expresso Americano",
             description: "Expresso diluído, menos intenso que o tradicional",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 3,
@@ -37,6 +39,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Expresso Cremoso",
             description: "Café expresso tradicional com espuma cremosa",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 4,
@@ -44,6 +47,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Expresso Gelado",
             description: "Bebida preparada com café expresso e cubos de gelo",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 5,
@@ -51,6 +55,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Café com Leite.svg",
             description: "Meio a meio de expresso tradicional com leite vaporizado",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 6,
@@ -58,6 +63,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "latte",
             description: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 7,
@@ -65,6 +71,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Capuccino",
             description: "Bebida com canela feita de doses iguais de café, leite e espuma",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 8,
@@ -72,6 +79,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Macchiato",
             description: "Café expresso misturado com um pouco de leite quente e espuma",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 9,
@@ -79,6 +87,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Mocaccino",
             description: "Café expresso com calda de chocolate, pouco leite e espuma",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 10,
@@ -86,6 +95,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Cubano",
             description: "Drink gelado de café expresso com rum, creme de leite e hortelã",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 11,
@@ -93,6 +103,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Havaiano",
             description: "Bebida adocicada preparada com café e leite de coco",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 12,
@@ -100,6 +111,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Árabe",
             description: "Bebida preparada com grãos de café árabe e especiarias",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 13,
@@ -107,6 +119,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Árabe",
             description: "Bebida preparada com grãos de café árabe e especiarias",
             amount: "9.90",
+            itemAmount: 1
           },
           {
             id: 14,
@@ -114,6 +127,7 @@ export function makeServer({ environment = "test" } = {}) {
             name: "Irlandês",
             description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
             amount: "9.90",
+            itemAmount: 1
           }
         ]
       })
@@ -133,18 +147,14 @@ export function makeServer({ environment = "test" } = {}) {
       //criando uma rota
       this.post('/coffees', (schema, request) => {
         const data = JSON.parse(request.requestBody) //
+
   
         return schema.create('coffee', data)
       })
 
-      this.put('/coffees/:id', (schema, request) => {
-        
-        const data = JSON.parse(request.requestBody) //
-  
-        return schema.create('coffee', data)
-      })
-
-      
+      this.put('/coffees', () => {
+        return this.schema.all('coffee') //retornar todas a transações
+      })//quando ouver uma requisição do tipo get para a rota transactions
     }
   
   })
