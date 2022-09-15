@@ -12,15 +12,15 @@ interface CoffeeProps {
   name: string,
   description: string,
   amount: string
-  itemAmount: string | undefined,
+  itemAmount: number,
 }
 
 
 
 export function Home() {
-  const [ coffee, setCoffee ] = useState<CoffeeProps[]>([])
-  console.log(coffee)
-  const [ amountItens, setAmountItens ] = useState(0)
+  const [ coffeeData, setCoffee ] = useState<CoffeeProps[]>([])
+  console.log(coffeeData)
+  const [ dataEdit, setDataEdit ] = useState([])
   
   useEffect(() => {
     const fetchData = async () => {
@@ -32,16 +32,33 @@ export function Home() {
 
   }, [])
 
-  async function handleAddItenCard(id: number) {
-    const findIdIten = coffee.find(find => find.id === id);
-    const updateAmount = [...coffee]
+  async function handleAddItenCard(coffee: CoffeeProps) {
+    // const findIdIten = coffeeData.find(find => find.id === coffee.id);
+    const coffeeIndex = coffeeData.findIndex((task) => {
+      return task.id == coffee.id;
+    });
+    
+    const tempCoffee = [...coffeeData];
 
-    const newCoffee: CoffeeProps = {
-      ...findIdIten,
-      itemAmount: '1'
+    tempCoffee[coffeeIndex].itemAmount = tempCoffee[coffeeIndex].itemAmount + 1
+
+    setCoffee(tempCoffee)
+  }
+
+  async function handleRemoveItenCard(coffee: CoffeeProps) {
+    
+    // const findIdIten = coffeeData.find(find => find.id === coffee.id);
+    const coffeeIndex = coffeeData.findIndex((task) => {
+      return task.id == coffee.id;
+    });
+    
+    const tempCoffee = [...coffeeData];
+    
+    if(coffee.itemAmount > 0) {
+      tempCoffee[coffeeIndex].itemAmount = tempCoffee[coffeeIndex].itemAmount - 1
     }
 
-    setCoffee((state) => [...state, newCoffee])
+    setCoffee(tempCoffee)
   }
 
   return (
@@ -91,7 +108,7 @@ export function Home() {
 
         <ListCoffeeContainerStyled>
         
-        { coffee.map(coffee => (
+        { coffeeData.map(coffee => (
           <ListCoffeeContenteStyled>
             <header>
               <img src={coffee.image} alt="Café expresso tradicional" />
@@ -113,11 +130,11 @@ export function Home() {
 
               <button 
                 type="button"
-                onClick={() => {handleAddItenCard(coffee.id)}}
+                // onClick={() => {handleAddItenCard(coffee)}}
               >
-                <Minus size={16} color={'#8047F8'} />
-                <p>{amountItens}</p>
-                <Plus size={16} color={'#8047F8'} />
+                <Minus size={16} onClick={() => handleRemoveItenCard(coffee)} color={'#8047F8'} />
+                <p>{coffee.itemAmount}</p>
+                <Plus size={16} onClick={() => handleAddItenCard(coffee)} color={'#8047F8'} />
               </button>
 
               <i>
