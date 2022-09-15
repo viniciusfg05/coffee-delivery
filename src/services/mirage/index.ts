@@ -125,13 +125,26 @@ export function makeServer({ environment = "test" } = {}) {
       this.get('/coffees', () => {
         return this.schema.all('coffee') //retornar todas a transações
       })//quando ouver uma requisição do tipo get para a rota transactions
-        
+      
+      this.get('/coffees/:id', () => {
+        return this.schema.all('coffee') //retornar todas a transações
+      })//quando ouver uma requisição do tipo get para a rota transactions
+
       //criando uma rota
       this.post('/coffees', (schema, request) => {
         const data = JSON.parse(request.requestBody) //
   
         return schema.create('coffee', data)
       })
+
+      this.put('/coffees/:id', (schema, request) => {
+        
+        const data = JSON.parse(request.requestBody) //
+  
+        return schema.create('coffee', data)
+      })
+
+      
     }
   
   })

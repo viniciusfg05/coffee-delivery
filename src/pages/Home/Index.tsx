@@ -33,15 +33,7 @@ export function Home() {
   }, [])
 
   async function handleAddItenCard(id: number) {
-    const findIdIten = coffee.find(find => find.id === id);
-    const updateAmount = [...coffee]
 
-    const newCoffee: CoffeeProps = {
-      ...findIdIten,
-      itemAmount: '1'
-    }
-
-    setCoffee((state) => [...state, newCoffee])
   }
 
   return (
