@@ -12,7 +12,9 @@ interface CoffeeProps {
 
 interface CoffeePropsTypes {
   coffeeData: CoffeeProps[]
-  setCoffee: (tempCoffee: CoffeeProps[]) => void
+  amountItenCard: number;
+  setCoffee: (tempCoffee: CoffeeProps[]) => void;
+  setAmountItemCardFunc: (operador: number) => void
 }
 
 interface CoffeProviderProps {
@@ -22,6 +24,8 @@ interface CoffeProviderProps {
 export const CoffeeContext = createContext({} as CoffeePropsTypes);
 
 export function CoffeeContextProvider({children}: CoffeProviderProps) {
+
+  const [ amountItenCard, setAmountItemCard ] = useState(0)
   const [ coffeeData, setCoffeeData ] = useState<CoffeeProps[]>([])
 
   useEffect(() => {
@@ -38,8 +42,12 @@ export function CoffeeContextProvider({children}: CoffeProviderProps) {
     setCoffeeData(tempCoffee)
   }
 
+  function setAmountItemCardFunc(operador: number) {
+    setAmountItemCard(operador)
+  }
+
   return (
-    <CoffeeContext.Provider value={{coffeeData, setCoffee}}>
+    <CoffeeContext.Provider value={{coffeeData, setCoffee, setAmountItemCardFunc, amountItenCard}}>
       {children}
     </CoffeeContext.Provider>
   )

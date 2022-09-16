@@ -35,7 +35,7 @@ export const ToolbarContainerStyled = styled.div`
         border-radius: 5px;
     }
     
-    section:last-child {
+    button {
         background: ${(props) => props.theme['yellow-light']};
         width: 2.375rem;
         height: 2.375rem;
@@ -43,5 +43,25 @@ export const ToolbarContainerStyled = styled.div`
         display: flex;
         justify-content: center;
         border-radius: 5px;
+        border: none;
+        cursor: pointer;
+
+        p {
+            background: ${(props) => props.theme['yellow-dark']};
+            color: ${(props) => props.theme['white']};
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: center;
+            border-radius: 50%;
+            position: absolute;
+            align-items: center;
+            text-align: center;
+            font-family: 'Roboto' sans-serif;
+            font-weight: 700;
+            margin-top: -2.2rem;
+            margin-right: -2rem;
+        }
     }
 `

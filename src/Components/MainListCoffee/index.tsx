@@ -4,7 +4,7 @@ import { ButtonAddeRemoveContentStyled, ContainerCoffeeStyled, ListCoffeeContain
 import { api } from "../../services/api";
 import { CoffeeContext } from "../../context/CoffeeContext";
 
-interface CoffeeProps {
+export interface CoffeeProps {
   id: number,
   image: string,
   name: string,
@@ -15,22 +15,69 @@ interface CoffeeProps {
 
 
 export function MainListCoffee() {
-  const { coffeeData, setCoffee } = useContext(CoffeeContext)
+  const { coffeeData, setCoffee, setAmountItemCardFunc, amountItenCard } = useContext(CoffeeContext)
 
-  async function handleAddItenCard(coffee: CoffeeProps) {
-    // const findIdIten = coffeeData.find(find => find.id === coffee.id);
+  const [ dataItemCard, setDataItemCard ] = useState<any[]>([])
+  // console.log(dataItemCard)
+
+  function data(coffee: CoffeeProps) {
     const coffeeIndex = coffeeData.findIndex((task) => {
       return task.id == coffee.id;
     });
+
+    coffeeData[coffeeIndex].itemAmount = coffeeData[coffeeIndex].itemAmount - 1
+
+    const res = coffeeData.map(data => {
+      return data
+    })
+
     
+
+    const resItem = coffeeData.map(data => {
+      return console.log(<p>{data.itemAmount}</p>) 
+
+    })
+    
+    const item = coffeeData[coffeeIndex].itemAmount = coffeeData[coffeeIndex].itemAmount + 1
+    // console.log(resItem)
+    
+    const dataCoffe: any = {
+      ...coffee,
+      itemAmount: 999
+    }
+    
+    console.log(coffee.itemAmount)
+    
+    res[coffeeIndex].itemAmount < 1 && setDataItemCard([dataCoffe ,...dataItemCard])
+    // console.log(res[0].id)
+  }
+
+  // console.log(dataItemCard)
+
+  async function handleAddItenCard(coffee: CoffeeProps) {
+    data(coffee)
+
+    const coffeeIndex = coffeeData.findIndex((task) => {
+      return task.id == coffee.id;
+    });
+
     const tempCoffee = [...coffeeData];
-
+    
     tempCoffee[coffeeIndex].itemAmount = tempCoffee[coffeeIndex].itemAmount + 1
-
+    
+    const operador = amountItenCard + 1
+    
+    
+    setAmountItemCardFunc(operador)
     setCoffee(tempCoffee)
+
+
+    
   }
 
   async function handleRemoveItenCard(coffee: CoffeeProps) {
+
+
     
     // const findIdIten = coffeeData.find(find => find.id === coffee.id);
     const coffeeIndex = coffeeData.findIndex((task) => {
@@ -43,6 +90,14 @@ export function MainListCoffee() {
       tempCoffee[coffeeIndex].itemAmount = tempCoffee[coffeeIndex].itemAmount - 1
     }
 
+    const operador = amountItenCard - 1
+
+    if(amountItenCard > 0) {
+      setAmountItemCardFunc(operador)
+    }
+
+    // console.log(coffee)
+
     setCoffee(tempCoffee)
   }
 
@@ -53,7 +108,7 @@ export function MainListCoffee() {
         <ListCoffeeContainerStyled>
         
         { coffeeData.map(coffee => (
-          <ListCoffeeContenteStyled>
+          <ListCoffeeContenteStyled key={coffee.id}>
             <header>
               <img src={coffee.image} alt="Café expresso tradicional" />
               <span>Tradicional</span>
@@ -78,7 +133,7 @@ export function MainListCoffee() {
               >
                 <Minus size={16} onClick={() => handleRemoveItenCard(coffee)} color={'#8047F8'} />
                 <p>{coffee.itemAmount}</p>
-                <Plus size={16} onClick={() => handleAddItenCard(coffee)} color={'#8047F8'} />
+                <Plus size={16} onClick={(() => handleAddItenCard(coffee) )} color={'#8047F8'} />
               </button>
 
               <i>
