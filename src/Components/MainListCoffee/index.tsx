@@ -15,21 +15,7 @@ interface CoffeeProps {
 
 
 export function MainListCoffee() {
-  const {ola} = useContext<any>(CoffeeContext)
-
-  console.log(ola)
-
-  const [ coffeeData, setCoffee ] = useState<CoffeeProps[]>([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await api.get('coffees') //rota possivelmente criariamos no futuro
-      .then(response => setCoffee(response.data.coffees)) //console .log nos dados
-    }
-
-    fetchData()
-
-  }, [])
+  const { coffeeData, setCoffee } = useContext(CoffeeContext)
 
   async function handleAddItenCard(coffee: CoffeeProps) {
     // const findIdIten = coffeeData.find(find => find.id === coffee.id);

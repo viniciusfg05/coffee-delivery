@@ -7,6 +7,7 @@ import { api } from './services/api'
 import { GlobalStyles } from './Styles/Global'
 import { defaultTheme } from './Styles/Theme/Default'
 import './services/mirage/index.ts'
+import { CoffeeContextProvider } from './context/CoffeeContext'
 
 interface CoffeeProps {
   id: number,
@@ -21,7 +22,9 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <RouterProvider />
+        <CoffeeContextProvider>
+          <RouterProvider />
+        </CoffeeContextProvider>
       
       </BrowserRouter>
       
