@@ -4,12 +4,13 @@ import { HeaderContainerStyled, ToolbarContainerStyled } from './styles'
 import { useContext } from 'react'
 import { CoffeeContext } from '../../context/CoffeeContext'
 import { CoffeeProps } from '../MainListCoffee'
+import { NavLink } from 'react-router-dom'
 
 const style = { background: "red",  }
 
 export function Header() {
-  const { amountItenCard, coffeeData } = useContext(CoffeeContext)
-
+  const { amountItenCard, dataItemCard } = useContext(CoffeeContext)
+  
 
   return (
     <HeaderContainerStyled>
@@ -25,7 +26,9 @@ export function Header() {
             <button
               type='button'
               >
-              <ShoppingCart color='#C47F17' weight="fill" size={22} />
+              <NavLink to="/checkout" title="">
+                <ShoppingCart color='#C47F17' weight="fill" size={22} />
+              </NavLink>  
               <p>{amountItenCard}</p>
             </button>
           </ToolbarContainerStyled>

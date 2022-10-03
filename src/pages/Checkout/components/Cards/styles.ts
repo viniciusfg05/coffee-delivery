@@ -1,0 +1,91 @@
+import styled from "styled-components"
+
+export const ListCardStyled = styled.header`
+    display: flex;
+    flex-direction: column;
+    width: 10.68rem;
+`
+export const ListCardContainerStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        font-size: 5rem;
+        width: 5rem;
+    }
+
+    background-color: ${(props) => props.theme['base-card']};
+    padding: 2.5rem;
+    border-top-right-radius: 36px;
+    border-bottom-left-radius: 36px;
+
+`
+
+export const ListCardContentStyled = styled.div`
+    display: flex;
+    width: 23rem;
+
+
+    img {
+        width: 4rem;
+        margin-right: 1.25rem;
+    }
+
+    > span {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-left: auto;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+    
+`
+
+export const DivideStyled = styled.div`
+    width: 100%;
+    border-bottom: 1px ${(props) => props.theme['base-button']} solid;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+`
+
+export const TotalContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: auto;
+
+    p {
+        font-size: 0.875rem;
+        display: flex;
+        
+    }
+
+    span {
+        font-size: 1rem;
+    }
+`
+
+export const TotalItemStyled = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+`
+
+export const EntregaStyled = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+`
+
+export const TotalGeralStyled = styled.div`
+    display: flex;
+    justify-content: space-between;
+    
+    p, span {
+        font-size: 1.5rem;
+        font-weight: 700;
+    } 
+`

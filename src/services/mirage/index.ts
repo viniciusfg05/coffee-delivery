@@ -1,6 +1,5 @@
 // src/server.js
 import { createServer, Model } from "miragejs"
-import { useEffect, useState } from "react"
 import { api } from "../api"
 
 

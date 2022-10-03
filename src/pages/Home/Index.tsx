@@ -1,7 +1,8 @@
 import background from '../../assets/background.svg'
 import { BackgroudImageStyled } from "./styles";
-import { Intro } from "../../Components/Intro";
-import { MainListCoffee } from "../../Components/MainListCoffee";
+// import { Intro } from './components/Intro';
+import { Intro } from './components/Intro';
+import { MainListCoffee } from './components/MainListCoffee';
 
 
 
