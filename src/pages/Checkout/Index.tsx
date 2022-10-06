@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CoffeeContext } from "../../context/CoffeeContext";
 import { ListCard } from "./components/Cards";
 import { Inputs } from "./components/Inputs";
+import { Payment } from "./components/Payment";
 import {
   MainContainerStyled,
   NoItemCardStyled,
@@ -22,6 +23,9 @@ export function Checkout() {
           <Inputs />
 
           <ListCard />
+
+          <Payment />
+
         </MainContainerStyled>
       </>
     );
@@ -32,6 +36,9 @@ export function Checkout() {
           <Inputs />
 
             <NoItemCardStyled>No momento você não tem item no carrinho</NoItemCardStyled>
+
+            <Payment />
+
         </MainContainerStyled>
       </>
     );

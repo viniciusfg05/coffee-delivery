@@ -1,5 +1,5 @@
 import { MapPin } from "phosphor-react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CoffeeContext } from "../../../../context/CoffeeContext";
 import { FormContainerStyled, HeaderFormStyled } from "./styles";
 
@@ -14,41 +14,35 @@ interface dataImputProps {
   }
 
 export function Inputs() {
-  const { dataItemCard, amountItenCard } = useContext(CoffeeContext);
-  const [data, setData] = useState<dataImputProps[]>([]);
+  const { dataItemCard, setDataInputFunc } = useContext(CoffeeContext);
+
+    const [cep, setCep] = useState('');
+    const [rua, setRua] = useState('');
+    const [numero, setNumero] = useState('');
+    const [complemento, setComplemento] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [uf, setUf] = useState('');
 
 
-    function handleAddItenCard(data: any) {
 
-        const tempCoffee = [...dataItemCard];
-      
-        tempCoffee[data.id].itemAmount = tempCoffee[data.id].itemAmount + 1
-        const arrayItemSelectInCard = tempCoffee[data.id] = tempCoffee[data.id]
-      
-        const operador = amountItenCard + 1
-      
-        if (data.itemAmount <= 1) {
-            console.log("1")
-        }
-      
-        }
-      
-        function handleCreateNewCycle(event: any) {
-          event.preventDefault();
-      
-          const inputData = {
-            cep: event.target.cep.value,
-            rua: event.target.rua.value,
-            numero: event.target.numero.value,
-            complemento: event.target.complemento.value,
-            bairro: event.target.bairro.value,
-            cidade: event.target.cidade.value,
-            uf: event.target.uf.value,
-          };
-      
-          setData([...data, inputData]);
-        }
-      
+    useEffect(() => {
+      const data = () => {
+        const dataInput = {
+          cep: cep,
+          rua: rua,
+          numero: numero,
+          complemento: complemento,
+          bairro: bairro,
+          cidade: cidade,
+          uf: uf,
+      }
+
+        setDataInputFunc([dataInput])
+      }
+
+      data()
+    }, [cep, rua, numero, complemento, bairro, cidade, uf])
 
     return (
         <FormContainerStyled>
@@ -60,29 +54,28 @@ export function Inputs() {
               </section>
             </HeaderFormStyled>
 
-            <form onSubmit={handleCreateNewCycle}>
+            <form>
               <input
-                onChange={handleCreateNewCycle}
-                id="cep"
+                onChange={(e: any) => setCep(e.target.value)}
                 type="number"
                 placeholder="CEP"
               />
               <input
-                onChange={handleCreateNewCycle}
                 id="rua"
                 type="text"
                 placeholder="Rua"
+                onChange={(e: any) => setRua(e.target.value)}
               />
 
               <div id="numeroEComplemento">
-                <input type="number" id="numero" placeholder="Número" />
-                <input type="text" id="complemento" placeholder="Complemento" />
+                <input type="number" id="numero" placeholder="Número" onChange={(e: any) => setNumero(e.target.value)}/>
+                <input type="text" id="complemento" placeholder="Complemento" onChange={(e: any) => setComplemento(e.target.value)}/>
               </div>
 
               <div id="bairoCidadeUf">
-                <input type="text" id="bairro" placeholder="Bairro" />
-                <input type="text" id="cidade" placeholder="Cidade" />
-                <input type="text" id="uf" placeholder="UF" />
+                <input type="text" id="bairro" placeholder="Bairro" onChange={(e: any) => setBairro(e.target.value)}/>
+                <input type="text" id="cidade" placeholder="Cidade" onChange={(e: any) => setCidade(e.target.value)}/>
+                <input type="text" id="uf" placeholder="UF" onChange={(e: any) => setUf(e.target.value)}/>
               </div>
             </form>
           </FormContainerStyled>

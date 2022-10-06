@@ -3,7 +3,6 @@ import { MapPin, ShoppingCart   } from 'phosphor-react'
 import { HeaderContainerStyled, ToolbarContainerStyled } from './styles'
 import { useContext } from 'react'
 import { CoffeeContext } from '../../context/CoffeeContext'
-import { CoffeeProps } from '../MainListCoffee'
 import { NavLink } from 'react-router-dom'
 
 const style = { background: "red",  }

@@ -64,7 +64,7 @@ const PROPS_COLORS = {
 } as const
   
 interface PropsColor {
-  propsColor?: keyof typeof PROPS_COLORS;
+  propsColor: keyof typeof PROPS_COLORS;
 }
 
 export const LiContentStyled = styled.i<PropsColor>`

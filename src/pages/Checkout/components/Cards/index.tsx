@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { ButtonRemoveAdd } from "../../../../Components/ButtonRemoveAdd";
 import { CoffeeContext } from "../../../../context/CoffeeContext";
 import {
@@ -13,13 +14,14 @@ import {
 } from "./styles";
 
 export function ListCard() {
-  const { dataItemCard, amountItenCard, freteAmount, setSomaTotalItemCardFunc, somaTotalItemCard } = useContext(CoffeeContext);
-
+  const { dataItemCard, amountItenCard, freteAmount, setSomaTotalItemCardFunc, somaTotalItemCard, dataInput } = useContext(CoffeeContext);
+  console.log(dataInput)
   const [totalAmount, setAmount] = useState(0);
 
   const [totalItemAmount, setItemAmount] = useState(0);
 
   const [totalValue, setTotalValue] = useState(0);
+
 
   //Soma a quantidade de item e  somar com a quantidade de valores
   useEffect(() => {
@@ -61,7 +63,7 @@ export function ListCard() {
 
     const total = totalAmount * totalItemAmount
     setTotalValue(total)
-  }, [totalAmount, totalItemAmount, dataItemCard, amountItenCard]);
+  }, [totalAmount, totalItemAmount, dataItemCard, amountItenCard, totalValue]);
 
   return (
     <ListCardContainerStyled>
@@ -104,6 +106,12 @@ export function ListCard() {
           <span>R$ {somaTotalItemCard + freteAmount}</span>
         </TotalGeralStyled>
       </TotalContainer>
+
+      <NavLink to="/checkout/success" title="">
+        <button type="button" disabled={dataInput[0].cep === '' ? true : false }>
+            confirmar pedido
+        </button>
+      </NavLink>
     </ListCardContainerStyled>
   );
 }

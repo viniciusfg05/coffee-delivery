@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const MainContainerStyled = styled.main`
-    max-width: 70rem;
+    width: 70rem;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    
 
 `
 

@@ -8,6 +8,7 @@ interface CoffeeProps {
   description: string;
   amount: string;
   itemAmount: number;
+  method?: string;
 }
 
 interface dataCoffeeMapProps {
@@ -22,16 +23,29 @@ interface CoffeePropsTypes {
   freteAmount: number;
   setCoffee: (tempCoffee: CoffeeProps[]) => void;
   setAmountItemCardFunc: (operador: number) => void;
-  setNewDataItemSelectionsAdd: (dataItemCard: CoffeeProps) => void;
+  setNewDataItemSelectionsAdd: (arrayItemSelectInCard: CoffeeProps) => void;
   setNewDataItemSelectionsRemove: (idItem: number) => void;
   setDataItemCardFunc: (results: CoffeeProps[]) => void;
   setSomaTotalItemCardFunc: (totalAmount: number) => void;
+  setAddMethodPayFunc: (method: string) => void;
+  setDataInputFunc: (dataInput: dataImputProps[]) => void;
   somaTotalItemCard: number;
   dataCoffeeMap: { coffee: CoffeeProps; coffeeItem: number }[];
+  dataInput: dataImputProps[]
 }
 
 interface CoffeProviderProps {
   children: ReactNode; // qualquer html valido
+}
+
+interface dataImputProps {
+  cep: string;
+  rua: string;
+  numero: string;
+  complemento: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
 }
 
 export const CoffeeContext = createContext({} as CoffeePropsTypes);
@@ -40,13 +54,15 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
 
   const [amountItenCard, setAmountItemCard] = useState(0);
 
-  const [freteAmount , setFreteAmount] = useState(3.90);
+  const [ freteAmount , setFreteAmount] = useState(3.90);
 
-  const [ somaTotalItemCard, setSomaTotalItemCard] = useState(0);
+  const [ somaTotalItemCard, setSomaTotalItemCard ] = useState(0);
 
   const [coffeeData, setCoffeeData] = useState<CoffeeProps[]>([]);
 
   const [dataItemCard, setDataItemCard] = useState<CoffeeProps[]>([]);
+
+  const [ dataInput, setDataInput ] = useState<dataImputProps[]>([]);
 
   const dataCoffeeMap = coffeeData.map((data) => {
     return {
@@ -54,8 +70,6 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
       coffeeItem: data.itemAmount,
     };
   });
-
-  console.log(dataCoffeeMap);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,16 +84,18 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
   function setCoffee(tempCoffee: CoffeeProps[]) {
     setCoffeeData(tempCoffee);
   }
-
+  
   function setAmountItemCardFunc(operador: number) {
     setAmountItemCard(operador);
     // dataItemCard &&  setAmountItemCard(0)
   }
 
-  function setNewDataItemSelectionsAdd(arrayItemSelectInCard: CoffeeProps) {
+  async function setNewDataItemSelectionsAdd(arrayItemSelectInCard: CoffeeProps) {
     // Add intem ao array de intem no card
     setCoffeeData((state) => [...state, arrayItemSelectInCard]);
+    
     setDataItemCard((state) => [...state, arrayItemSelectInCard]);
+
   }
 
   function setNewDataItemSelectionsRemove(idItem: number) {
@@ -97,6 +113,20 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
     setSomaTotalItemCard(totalAmount)
   }
 
+  function setAddMethodPayFunc(method: string) {
+    const methodPay = dataItemCard.map(dataItemCard => {
+      return {
+          ...dataItemCard,
+          method: method
+      }
+    })
+    
+    setDataItemCard(methodPay);
+  }
+
+  function setDataInputFunc(dataInput: dataImputProps[]) {
+    setDataInput(dataInput)
+  }
 
   return (
     <CoffeeContext.Provider
@@ -112,7 +142,10 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
         setDataItemCardFunc,
         freteAmount,
         setSomaTotalItemCardFunc,
-        somaTotalItemCard
+        somaTotalItemCard,
+        setAddMethodPayFunc,
+        setDataInputFunc,
+        dataInput
       }}
     >
       {children}

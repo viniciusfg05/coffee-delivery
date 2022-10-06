@@ -9,6 +9,23 @@ export const ListCardContainerStyled = styled.div`
     display: flex;
     flex-direction: column;
 
+    a button {
+        width: 100%;
+        background: ${(props) => props.theme['yellow']};
+        margin-top: 1.5rem;
+        border-radius: 0.3rem;
+        font-size: 0.875rem;
+        color: ${(props) => props.theme['white']};
+        font-weight: 700;
+        height: 2.875rem;
+
+        :disabled {
+            background: ${(props) => props.theme['yellow-dark']};
+            cursor: not-allowed;
+
+        }
+    }
+
     h1 {
         font-size: 5rem;
         width: 5rem;

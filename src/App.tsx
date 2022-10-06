@@ -8,6 +8,7 @@ import { GlobalStyles } from './Styles/Global'
 import { defaultTheme } from './Styles/Theme/Default'
 import './services/mirage/index.ts'
 import { CoffeeContextProvider } from './context/CoffeeContext'
+import { ChakraProvider } from '@chakra-ui/react'
 
 interface CoffeeProps {
   id: number,
@@ -21,14 +22,16 @@ interface CoffeeProps {
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        <CoffeeContextProvider>
-          <RouterProvider />
-        </CoffeeContextProvider>
-      
-      </BrowserRouter>
-      
-      <GlobalStyles />
+      <ChakraProvider>
+        <BrowserRouter>
+          <CoffeeContextProvider>
+            <RouterProvider />
+          </CoffeeContextProvider>
+        
+        </BrowserRouter>
+        
+        <GlobalStyles />
+      </ChakraProvider>
     </ThemeProvider>
   )
 }
