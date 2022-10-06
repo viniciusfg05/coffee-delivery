@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${(props) => props.theme['background']};
+    background: #FAFAFA;
     font-size: 2.4rem;
     /* color: ${(props) => props.theme['base-text']}; */
   }
