@@ -11,14 +11,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: #FAFAFA;
     font-size: 2.4rem;
-    /* color: ${(props) => props.theme['base-text']}; */
   }
-
-  /* :focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px;
-
-  } */
 
   body, input, textarea, button {
     font-family: 'Roboto', sans-serif;
