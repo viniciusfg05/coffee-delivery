@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const api = axios.create({
-    baseURL: 'http://localhost:8080/api'
+    baseURL: 'coffee-delivery-gccuzg1yn-viniciusfg05.vercel.app/api'
 })
