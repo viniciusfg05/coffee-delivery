@@ -24,6 +24,11 @@ export const ListCoffeeContainerStyled = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem;
 
+    @media (max-width: 360px) {
+        grid-template-columns: 1fr;
+
+    }
+
 `
 
 export const ListCoffeeContenteStyled = styled.div`

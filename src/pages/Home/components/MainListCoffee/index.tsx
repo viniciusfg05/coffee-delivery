@@ -1,8 +1,7 @@
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ButtonRemoveAdd } from "../../../../Components/ButtonRemoveAdd";
 import { CoffeeContext } from "../../../../context/CoffeeContext";
-import { ButtonAddeRemoveContentStyled, ContainerCoffeeStyled, ListCoffeeContainerStyled, ListCoffeeContenteStyled } from "./styles";
+import { ContainerCoffeeStyled, ListCoffeeContainerStyled, ListCoffeeContenteStyled } from "./styles";
 
 export interface CoffeeProps {
   id: number,
@@ -15,20 +14,17 @@ export interface CoffeeProps {
 
 
 export function MainListCoffee() {
-  const { coffeeData, freteAmount, dataItemCard, setNewDataItemSelectionsAdd, setNewDataItemSelectionsRemove, amountItenCard } = useContext(CoffeeContext)
-  
-  const resItemAmount = dataItemCard.forEach((data) => {
-    return data.itemAmount;
-  });
+  const { coffeeData } = useContext(CoffeeContext)
+
 
 
   return (
     <ContainerCoffeeStyled>
-        <h1>Nossos cafés</h1>
+      <h1>Nossos cafés</h1>
 
-        <ListCoffeeContainerStyled>
-        
-        { coffeeData.map(coffee => (
+      <ListCoffeeContainerStyled>
+
+        {coffeeData.map(coffee => (
           <ListCoffeeContenteStyled key={coffee.id}>
             <header>
               <img src={coffee.image} alt="Café expresso tradicional" />
@@ -47,11 +43,11 @@ export function MainListCoffee() {
               </aside>
 
 
-              <ButtonRemoveAdd coffee={coffee} coffeeItem={coffee.itemAmount} isIcon={false}/>
+              <ButtonRemoveAdd coffee={coffee} coffeeItem={coffee.itemAmount} isIcon={false} />
 
             </footer >
           </ListCoffeeContenteStyled>
-        )) }
+        ))}
       </ListCoffeeContainerStyled>
     </ContainerCoffeeStyled>
 

@@ -11,17 +11,10 @@ export function Payment() {
 
   const [activeSelectButton, setActiveSelectButton] = useState<any>('')
 
-  console.log(activeSelectButton)
-
-
   function handleCardCredit(method: any) {
     setAddMethodPayFunc(method)
 
-    const data = dataItemCard.map(dataItemCard => {
-      return dataItemCard.method
-    })
-    //   setActiveSelectButton('selectButton') 
-    setActiveSelectButton(data)
+
   }
 
   const options = ['Cartão de Crédito', 'Cartão de Débito', 'Dinheiro']

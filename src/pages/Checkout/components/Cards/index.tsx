@@ -15,12 +15,37 @@ import {
 
 export function ListCard() {
   const { dataItemCard, amountItenCard, freteAmount, setSomaTotalItemCardFunc, somaTotalItemCard, dataInput } = useContext(CoffeeContext);
-  console.log(dataInput)
+
   const [totalAmount, setAmount] = useState(0);
 
   const [totalItemAmount, setItemAmount] = useState(0);
 
   const [totalValue, setTotalValue] = useState(0);
+  const [totalGeral, setTotalGeral] = useState('');
+
+  const real = Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  const frete = real.format(freteAmount)
+  const totalCurrency = real.format(somaTotalItemCard)
+
+  const validaçãoIput = dataInput.map((data => {
+    return (
+      data.cep === '',
+      data.rua === '',
+      data.numero === '',
+      data.bairro === '',
+      data.cidade === '',
+      data.complemento === '',
+      data.uf === ''
+    )
+  }))
+
+  const validaçãoButton = dataItemCard.map((data => {
+    return data.method ? true : false;
+  }))
 
 
   //Soma a quantidade de item e  somar com a quantidade de valores
@@ -47,7 +72,6 @@ export function ListCard() {
           totalItemAmount += getItemAmount[i];
         }
 
-        setAmount(totalItemAmount);
       }
 
       let totalAmount = 0;
@@ -56,13 +80,24 @@ export function ListCard() {
           totalAmount += resAmount[i];
         }
 
-        setSomaTotalItemCardFunc(totalAmount);
       }
+
+      let real = Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+
+      const total = totalAmount * totalItemAmount
+      const totalToFixed = total.toFixed(1);
+      const totalGeral = real.format(Number(totalToFixed) + freteAmount)
+
+
+      setSomaTotalItemCardFunc(Number(totalToFixed));
+      setTotalValue(Number(totalToFixed))
+      setTotalGeral(totalGeral)
     };
     Soma();
 
-    const total = totalAmount * totalItemAmount
-    setTotalValue(total)
   }, [totalAmount, totalItemAmount, dataItemCard, amountItenCard, totalValue]);
 
   return (
@@ -93,23 +128,23 @@ export function ListCard() {
       <TotalContainer>
         <TotalItemStyled>
           <p>Total de Itens</p>
-          <span>R${somaTotalItemCard}</span>
+          <span>{totalCurrency}</span>
         </TotalItemStyled>
 
         <EntregaStyled>
           <p>Entrega</p>
-          <span>R$ {freteAmount}</span>
+          <span>{frete}</span>
         </EntregaStyled>
 
         <TotalGeralStyled>
           <p>Total</p>
-          <span>R$ {somaTotalItemCard + freteAmount}</span>
+          <span>{totalGeral}</span>
         </TotalGeralStyled>
       </TotalContainer>
 
       <NavLink to="/checkout/success" title="">
-        <button type="button" disabled={dataInput[0].cep === '' ? true : false }>
-            confirmar pedido
+        <button type="button" disabled={validaçãoIput[0] === false && validaçãoIput[0] !== validaçãoButton[0] ? false : true} >
+          confirmar pedido
         </button>
       </NavLink>
     </ListCardContainerStyled>

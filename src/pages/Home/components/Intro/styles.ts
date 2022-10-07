@@ -9,6 +9,11 @@ export const MainContainerStyled = styled.main`
     gap: 4.81rem;
     margin-top: 5.875rem;
 
+    @media (max-width: 360px) {
+        grid-template-columns: 1fr;
+
+    }
+
     section {
 
         h1 {
