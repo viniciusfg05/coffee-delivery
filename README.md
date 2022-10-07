@@ -2,9 +2,7 @@
   <img src="public//logoCoffee.svg" alt="Logo" />
 </div>
 
-<div align="center">
-  <iframe src="https://giphy.com/embed/bsbIktnd1ZXKwnYC7B" width="480" height="270" frameBorder="0" allowFullScreen></iframe>
-</div>
+<iframe src="https://giphy.com/embed/bsbIktnd1ZXKwnYC7B" width="480" height="270" frameBorder="0" allowFullScreen></iframe>
 
 ## Descrição do Projeto
 
