@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <iframe src="https://giphy.com/embed/bsbIktnd1ZXKwnYC7B" width="480" height="270" frameBorder="0" allowFullScreen></iframe>
+  <iframe src="public//giphy.mp4" width="480" height="270" frameBorder="0" allowFullScreen></iframe>
 </div>
 
 ## Descrição do Projeto
