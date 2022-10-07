@@ -3,8 +3,9 @@
 </div>
 
 <div align="center">
-  <iframe src="public//giphy.mp4" width="480" height="270" frameBorder="0" allowFullScreen></iframe>
+  <img src="public//giphy.git.gif" alt="Logo" />
 </div>
+
 
 ## Descrição do Projeto
 
