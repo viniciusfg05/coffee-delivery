@@ -12,6 +12,7 @@ export function Home() {
   return (
     <>
       <BackgroudImageStyled style={{backgroundImage: `url(${background})`} }  />
+      
       <Intro />
       <MainListCoffee />
     </>
