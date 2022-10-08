@@ -9,7 +9,7 @@
 
 ## Descrição do Projeto
 
-/////////////
+Aplicação desenvolvida durante o desafio do Curso do Ignite - Rocketseate, onde foi preciso criar um aplicação totalmente do zero de um site Coffee Shop. Desenvolvendo desde do início ao fim, como obrigatoriedade de conter as features mencionadas abaixo.
 
 [Layout do Figma](<https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate>)
 
