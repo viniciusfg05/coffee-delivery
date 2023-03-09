@@ -20,11 +20,12 @@ export function Checkout() {
     return (
       <>
         <MainContainerStyled>
-          <Inputs />
-
+          <section>
+            <Inputs />
+            <Payment /> 
+          </section>
+          
           <ListCard />
-
-          <Payment />
 
         </MainContainerStyled>
       </>

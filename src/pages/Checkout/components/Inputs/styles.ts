@@ -5,7 +5,8 @@ export const FormContainerStyled = styled.form`
     width: 40rem;
     padding: 2.5rem;
     border-radius: 10px;
-    height: 23.25rem;
+    height: 24.5rem;
+    box-sizing: border-box;
 
     form {
         display: flex;

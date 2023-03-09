@@ -34,9 +34,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Chakra Ui](https://chakra-ui.com/)
 - [Vite JS](https://vitejs.dev/)
 - [Axios](https://axios-http.com/ptbr/docs/intro)
-- [Mirage JS](https://axios-http.com/ptbr/docs/intro)
-- [Styled Components](https://axios-http.com/ptbr/docs/intro)
-- [Phosphor React"](https://axios-http.com/ptbr/docs/intro)
+- [Mirage JS]()
+- [Styled Components]()
+- [Phosphor React"]()
 
 ### Instalação 
 

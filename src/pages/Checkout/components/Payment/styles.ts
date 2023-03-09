@@ -5,6 +5,8 @@ export const PaymentCointainerStyled = styled.div`
     background-color: ${(props) => props.theme['base-card']};
     height: 13.125rem;
     padding: 2.5rem;
+    margin-top: 2rem;
+    border-radius: 8px;
 
     > section {
         display: flex;

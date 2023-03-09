@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const MainContainerStyled = styled.main`
     width: 70rem;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 2rem;
 
 `

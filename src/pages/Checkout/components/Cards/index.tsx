@@ -1,3 +1,46 @@
+const number = 2 + 2 
+
+console.log(number)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ButtonRemoveAdd } from "../../../../Components/ButtonRemoveAdd";
@@ -15,6 +58,8 @@ import {
 
 export function ListCard() {
   const { dataItemCard, amountItenCard, freteAmount, setSomaTotalItemCardFunc, somaTotalItemCard, dataInput } = useContext(CoffeeContext);
+
+  console.log(dataItemCard)
 
   const [totalAmount, setAmount] = useState(0);
 
