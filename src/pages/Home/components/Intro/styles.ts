@@ -117,8 +117,8 @@ export const TextStyled = styled.div`
 
     @media (max-width: 760px) {
         width: 100vw;
-        width: 2rem;
-        height: 2rem;
+        /* width: 2rem;
+        height: 2rem; */
     }
 
 `
