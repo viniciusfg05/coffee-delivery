@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/api";
+import dataDB from "../../data.json"
 
 interface CoffeeProps {
   id: number;
@@ -76,9 +77,10 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await api
-        .get("coffees") //rota possivelmente criariamos no futuro
-        .then((response) => setCoffeeData(response.data.coffees)); //console .log nos dados
+      // await api
+      //   .get("coffees") //rota possivelmente criariamos no futuro
+      //   .then((response) => setCoffeeData(response.data.coffees)); //console .log nos dados
+      await setCoffeeData(dataDB)
     };
 
     fetchData();
