@@ -10,11 +10,30 @@ export const ContainerCoffeeStyled = styled.div`
 
         display: flex;
         justify-content: flex-start;
-        margin: 8.75rem auto 3.75rem auto;
+        margin: 3.75rem auto 3.75rem auto;
         width: 100%;
         color: ${(props) => props.theme['base-subtitle']};
         font-family: 'Baloo 2', sans-serif;
+        font-size: 2rem;
     }
+
+    @media (max-width: 1000px) {
+        h1 {
+            width: 11.9rem;
+            margin: auto;
+            margin-bottom: 2rem;
+        }
+    }
+
+    @media (max-width: 700px) {
+        h1 {
+            width: 11.9rem;
+            margin: auto;
+            margin-bottom: 3rem;
+
+        }
+    }
+    
 `
 
 export const ListCoffeeContainerStyled = styled.div`
@@ -24,9 +43,17 @@ export const ListCoffeeContainerStyled = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem;
 
-    @media (max-width: 360px) {
-        grid-template-columns: 1fr;
+    @media (max-width: 1100px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    @media (max-width: 460px) {
+        grid-template-columns: 1fr;
     }
 
 `

@@ -1,5 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import { LiContentStyled, MainContainerStyled } from "./styles";
+import { LiContentStyled, MainContainerStyled, TextStyled } from "./styles";
 import cofferBanner from '../../../../assets/cofferBanner.svg'
 
 
@@ -8,8 +8,10 @@ export function Intro() {
     <MainContainerStyled >
 
     <section>
-      <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-      <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+      <TextStyled>
+        <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+        <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+      </TextStyled>
 
       <ul>
         <li>

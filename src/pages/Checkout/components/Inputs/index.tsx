@@ -1,83 +1,130 @@
 import { MapPin } from "phosphor-react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { CoffeeContext } from "../../../../context/CoffeeContext";
-import { FormContainerStyled, HeaderFormStyled } from "./styles";
+import { ButtonStyled, ConteinerError, FormContainerStyled, FormError, HeaderFormStyled } from "./styles";
 
 interface dataImputProps {
-    cep: string;
-    rua: string;
-    numero: string;
-    complemento: string;
-    bairro: string;
-    cidade: string;
-    uf: string;
-  }
+  cep: string;
+  rua: string;
+  numero: string;
+  complemento: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+}
+
+const inputFormSchema = z.object({
+  address: z.object({
+    cep: z
+      .string()
+      .min(8, { message: "CEP precisa conter no mínimo 8 caracteres" })
+      .max(8, { message: "CEP Invalido" })
+      .regex(/^[0-9]+$/, { message: "CEP precisa conter apenas número" }),
+    endereco: z
+      .string()
+      .min(5, { message: "Endereço precisa conter no mínimo 5 caracteres" }),
+    numero: z.string().min(1, { message: "No mínimo 1 caracteres"}),
+    complemento: z.string(),
+    bairro: z.string().min(3, { message: "Cidade precisa conter mínimo 3 caracteres" }),
+    cidade: z.string().min(3, { message: "Cidade precisa conter mínimo 3 caracteres" }),
+    uf: z.string().min(2, { message: "UF precisa conter mínimo 2 caracteres" })
+  }),
+});
+
+type RegisterFormData = z.infer<typeof inputFormSchema>;
 
 export function Inputs() {
   const { dataItemCard, setDataInputFunc } = useContext(CoffeeContext);
 
-    const [cep, setCep] = useState('');
-    const [rua, setRua] = useState('');
-    const [numero, setNumero] = useState('');
-    const [complemento, setComplemento] = useState('');
-    const [bairro, setBairro] = useState('');
-    const [cidade, setCidade] = useState('');
-    const [uf, setUf] = useState('');
+  const {
+    handleSubmit,
+    register,
+    setValue,
+    formState: { errors, isSubmitSuccessful, isValid, isValidating },
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(inputFormSchema),
+  });
+
+  function handleCreateAdress({address}: any) {
+    setDataInputFunc(address);
+    console.log(address)
+  }
+  console.log(isValid)
+  console.log(isValidating)
 
 
+  return (
+    <FormContainerStyled>
+      <HeaderFormStyled>
+        <MapPin color="#C47F17" weight="fill" size={22} />
+        <section>
+          <p>Endereço de Entrega</p>
+          <span>Informe o endereço onde deseja receber seu pedido</span>
+        </section>
+      </HeaderFormStyled>
 
-    useEffect(() => {
-      const data = () => {
-        const dataInput = {
-          cep: cep,
-          rua: rua,
-          numero: numero,
-          complemento: complemento,
-          bairro: bairro,
-          cidade: cidade,
-          uf: uf,
-      }
+      <form onSubmit={handleSubmit(handleCreateAdress)}>
+        <input type="number" placeholder="CEP" {...register("address.cep")} />
 
-        setDataInputFunc([dataInput])
-      }
+        <input
+          type="text"
+          placeholder="Endereço"
+          {...register("address.endereco")}
+        />
 
-      data()
-    }, [cep, rua, numero, complemento, bairro, cidade, uf])
+        <div id="numeroEComplemento">
+          <input
+            type="number"
+            placeholder="Número"
+            {...register("address.numero")}
+          />
+          <input
+            type="text"
+            id="complemento"
+            placeholder="Complemento"
+            {...register("address.complemento")}
+          />
+        </div>
 
-    return (
-        <FormContainerStyled>
-            <HeaderFormStyled>
-              <MapPin color="#C47F17" weight="fill" size={22} />
-              <section>
-                <p>Endereço de Entrega</p>
-                <span>Informe o endereço onde deseja receber seu pedido</span>
-              </section>
-            </HeaderFormStyled>
+        <div id="bairoCidadeUf">
+          <input
+            type="text"
+            id="bairro"
+            placeholder="Bairro"
+            {...register("address.bairro")}
+          />
+          <input
+            type="text"
+            id="cidade"
+            placeholder="Cidade"
+            {...register("address.cidade")}
+          />
+          <input
+            type="text"
+            id="uf"
+            placeholder="UF"
+            {...register("address.uf")}
+          />
+        </div>
 
-            <form>
-              <input
-                onChange={(e: any) => setCep(e.target.value)}
-                type="number"
-                placeholder="CEP"
-              />
-              <input
-                id="rua"
-                type="text"
-                placeholder="Rua"
-                onChange={(e: any) => setRua(e.target.value)}
-              />
+        { isValid &&
+          <ConteinerError>
+            { errors.address?.cep && <FormError>{errors.address?.cep?.message}</FormError> }
+            { errors.address?.endereco && <FormError>{errors.address?.endereco?.message}</FormError> }
+            { errors.address?.numero && <FormError>{errors.address?.numero?.message}</FormError> }
+            { errors.address?.bairro && <FormError>{errors.address?.bairro?.message}</FormError> }
+            { errors.address?.cidade && <FormError>{errors.address?.cidade?.message}</FormError> }
+            { errors.address?.uf && <FormError>{errors.address?.uf?.message}</FormError> }
+          </ConteinerError>
+        }
 
-              <div id="numeroEComplemento">
-                <input type="number" id="numero" placeholder="Número" onChange={(e: any) => setNumero(e.target.value)}/>
-                <input type="text" id="complemento" placeholder="Complemento" onChange={(e: any) => setComplemento(e.target.value)}/>
-              </div>
-
-              <div id="bairoCidadeUf">
-                <input type="text" id="bairro" placeholder="Bairro" onChange={(e: any) => setBairro(e.target.value)}/>
-                <input type="text" id="cidade" placeholder="Cidade" onChange={(e: any) => setCidade(e.target.value)}/>
-                <input type="text" id="uf" placeholder="UF" onChange={(e: any) => setUf(e.target.value)}/>
-              </div>
-            </form>
-          </FormContainerStyled>
-    )
+        
+        { !errors.address && <ButtonStyled type="submit">Gravar</ButtonStyled>}
+        
+      </form>
+    </FormContainerStyled>
+  );
 }

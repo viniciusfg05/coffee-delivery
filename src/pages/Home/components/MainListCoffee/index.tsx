@@ -20,8 +20,8 @@ export function MainListCoffee() {
 
   return (
     <ContainerCoffeeStyled>
-      <h1>Nossos cafés</h1>
 
+      <h1>Nossos cafés</h1>
       <ListCoffeeContainerStyled>
 
         {coffeeData.map(coffee => (

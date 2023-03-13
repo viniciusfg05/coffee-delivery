@@ -28,10 +28,11 @@ interface CoffeePropsTypes {
   setDataItemCardFunc: (results: CoffeeProps[]) => void;
   setSomaTotalItemCardFunc: (totalAmount: number) => void;
   setAddMethodPayFunc: (method: string) => void;
-  setDataInputFunc: (dataInput: dataImputProps[]) => void;
+  setDataInputFunc: (dataInput: dataImputProps) => void;
   somaTotalItemCard: number;
   dataCoffeeMap: { coffee: CoffeeProps; coffeeItem: number }[];
-  dataInput: dataImputProps[]
+  dataInput: dataImputProps | undefined;
+  method: string;
 }
 
 interface CoffeProviderProps {
@@ -40,7 +41,7 @@ interface CoffeProviderProps {
 
 interface dataImputProps {
   cep: string;
-  rua: string;
+  endereco: string;
   numero: string;
   complemento: string;
   bairro: string;
@@ -61,8 +62,10 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
   const [coffeeData, setCoffeeData] = useState<CoffeeProps[]>([]);
 
   const [dataItemCard, setDataItemCard] = useState<CoffeeProps[]>([]);
+  console.log(dataItemCard)
 
-  const [ dataInput, setDataInput ] = useState<dataImputProps[]>([]);
+  const [ dataInput, setDataInput ] = useState<dataImputProps>();
+  const [ method, setMethod ] = useState("");
 
   const dataCoffeeMap = coffeeData.map((data) => {
     return {
@@ -114,6 +117,7 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
   }
 
   function setAddMethodPayFunc(method: string) {
+    setMethod(method)
     const methodPay = dataItemCard.map(dataItemCard => {
       return {
           ...dataItemCard,
@@ -124,7 +128,7 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
     setDataItemCard(methodPay);
   }
 
-  function setDataInputFunc(dataInput: dataImputProps[]) {
+  function setDataInputFunc(dataInput: dataImputProps) {
     setDataInput(dataInput)
   }
 
@@ -145,7 +149,8 @@ export function CoffeeContextProvider({ children }: CoffeProviderProps) {
         somaTotalItemCard,
         setAddMethodPayFunc,
         setDataInputFunc,
-        dataInput
+        dataInput,
+        method
       }}
     >
       {children}

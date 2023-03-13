@@ -36,6 +36,10 @@ export const ListCardContainerStyled = styled.div`
     border-top-right-radius: 36px;
     border-bottom-left-radius: 36px;
 
+    @media(max-width: 768px) {
+        padding: 1rem;
+    }
+
 `
 
 export const ListCardContentStyled = styled.div`
@@ -58,6 +62,12 @@ export const ListCardContentStyled = styled.div`
         font-size: 1rem;
     }
     
+    @media(max-width: 768px) {
+        > span {
+        margin-left: 0.5rem;
+        font-size: 1.125rem;
+    }
+    }
 `
 
 export const DivideStyled = styled.div`

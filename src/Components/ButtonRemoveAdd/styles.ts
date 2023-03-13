@@ -51,6 +51,7 @@ export const ButtonAddeRemoveContentStyled = styled.div`
 
     
     > i a {
+        font-size: 1.25rem;
         background: ${(props) => props.theme['purple-dark']};
         display: flex;
         width: 2.375rem;
@@ -63,8 +64,6 @@ export const ButtonAddeRemoveContentStyled = styled.div`
     span {
         background: ${(props) => props.theme['base-button']};
         display: flex;
-        width: 5.867rem; 
-        height: 2rem;
         border-radius: 5px;
         align-items: center;
         justify-content: center;
@@ -72,6 +71,11 @@ export const ButtonAddeRemoveContentStyled = styled.div`
         font-style: normal;
         cursor: pointer;
         transition: 0.3s;
+        padding: 0.4rem;
+        line-height: 0;
+
+        @media(max-width: 768px) {
+        }
 
         i {
             margin-right: 0.5rem;

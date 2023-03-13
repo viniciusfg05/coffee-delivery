@@ -133,9 +133,9 @@ export function ButtonRemoveAdd({ coffee, coffeeItem, isIcon, idItem }: props) {
         ) : (
           <span onClick={() => handleRemoveItem(idItem)}>
             <i>
-              <Trash size={16} color={"#8047F8"} />
+              <Trash size={20} color={"#8047F8"} />
             </i>
-            Remover
+            {/* Remover */}
           </span>
         )}
       </ButtonAddeRemoveContentStyled>

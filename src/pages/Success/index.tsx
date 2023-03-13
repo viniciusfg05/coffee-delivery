@@ -6,9 +6,8 @@ import { CotainerSyled, InfosPedidoStyled, MainCotentStyled } from "./styles";
 import { LiContentStyled } from "../Home/components/Intro/styles";
 
 export function Success() {
-    const { dataInput, dataItemCard, freteAmount, setSomaTotalItemCardFunc, somaTotalItemCard } = useContext(CoffeeContext);
+    const { dataInput, method, freteAmount, setSomaTotalItemCardFunc, somaTotalItemCard } = useContext(CoffeeContext);
 
-    console.log(dataInput)
     return (
         <CotainerSyled>
             <div>
@@ -24,7 +23,7 @@ export function Success() {
                                 <LiContentStyled propsColor='purplueDark'>
                                     <MapPin size={14} weight="fill" color='white' />
                                 </LiContentStyled>
-                                <span>{`Entrega na ${dataInput[0].rua}, ${dataInput[0].numero}, ${dataInput[0].bairro} - ${dataInput[0].cidade} ${dataInput[0].uf}`}</span>
+                                <span>{`Entrega na ${dataInput?.endereco}, ${dataInput?.numero}, ${dataInput?.bairro} - ${dataInput?.cidade} ${dataInput?.uf}`}</span>
                             </li>
                             <li>
                                 <LiContentStyled propsColor='yellow' >
@@ -36,7 +35,7 @@ export function Success() {
                                 <LiContentStyled propsColor='yellowDark'>
                                     <Money size={14} weight="fill" color='white' />
                                 </LiContentStyled>
-                                <span>{`Pagamento na entrega ${dataItemCard[0].method}`}</span>
+                                <span>{`Pagamento na entrega ${method}`}</span>
                             </li>
                         </ul>
                     </InfosPedidoStyled>

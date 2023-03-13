@@ -8,6 +8,8 @@ export const PaymentCointainerStyled = styled.div`
     margin-top: 2rem;
     border-radius: 8px;
 
+
+
     > section {
         display: flex;
         justify-content: space-between;
@@ -25,13 +27,33 @@ export const PaymentCointainerStyled = styled.div`
         }
 
     }
+
+    @media(max-width: 768px) {
+        height: 100%;
+        min-width: 22rem ;
+        width: 100%;
+        padding: 1rem;
+
+        .container-button {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .button-pay {
+            display: flex;
+            width: 20rem;
+            
+
+        }
+    }
 `
 
 export const HeaderFormStyled = styled.div`
-    font-size: 0.875rem;
+    font-size: 1rem;
     display: flex;
-    color: ${(props) => props.theme['base-text']};
-
+    color: ${(props) => props.theme["base-text"]};
     margin-bottom: 2rem;
     
     
@@ -49,6 +71,10 @@ export const HeaderFormStyled = styled.div`
             font-size: 1rem;
             color: ${(props) => props.theme['base-subtitle']};
         }
+    }
+
+    @media(max-width: 768px) {
+        font-size: 1.125rem;
     }
 `
 

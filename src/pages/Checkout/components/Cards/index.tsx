@@ -76,17 +76,6 @@ export function ListCard() {
   const frete = real.format(freteAmount)
   const totalCurrency = real.format(somaTotalItemCard)
 
-  const validaçãoIput = dataInput.map((data => {
-    return (
-      data.cep === '',
-      data.rua === '',
-      data.numero === '',
-      data.bairro === '',
-      data.cidade === '',
-      data.complemento === '',
-      data.uf === ''
-    )
-  }))
 
   const validaçãoButton = dataItemCard.map((data => {
     return data.method ? true : false;
@@ -150,6 +139,7 @@ export function ListCard() {
       {dataItemCard.map((data) => (
         <>
           <ListCardContentStyled>
+            
             <img src={data.image} alt="" />
 
             <ListCardStyled>
@@ -188,7 +178,7 @@ export function ListCard() {
       </TotalContainer>
 
       <NavLink to="/checkout/success" title="">
-        <button type="button" disabled={validaçãoIput[0] === false && validaçãoIput[0] !== validaçãoButton[0] ? false : true} >
+        <button type="button" >
           confirmar pedido
         </button>
       </NavLink>

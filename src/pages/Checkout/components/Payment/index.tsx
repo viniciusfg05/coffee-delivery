@@ -13,8 +13,7 @@ export function Payment() {
 
   function handleCardCredit(method: any) {
     setAddMethodPayFunc(method)
-
-
+    
   }
 
   const options = ['Cartão de Crédito', 'Cartão de Débito', 'Dinheiro']
@@ -41,7 +40,7 @@ export function Payment() {
       </HeaderFormStyled>
 
       <section>
-        <HStack {...group} >
+        <HStack {...group}  className="container-button">
           {options.map((method) => {
             const radio = getRadioProps({ method })
             return (

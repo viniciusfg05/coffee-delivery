@@ -5,6 +5,15 @@ export const MainContainerStyled = styled.main`
     margin: 0 auto;
     display: flex;
     gap: 2rem;
+    
+    @media(max-width: 768px) {
+        flex-direction: column;
+        width: calc(100vw - 2rem);
+        margin: 0 auto;
+
+        section {
+        }
+    }
 
 `
 
@@ -46,6 +55,11 @@ export const NoItemCardStyled = styled.p`
     border-top-right-radius: 36px;
     border-bottom-left-radius: 36px;
     width: 100%;
+
+    @media(max-width: 768px) {
+        width: 100%;
+        margin: 0;
+    }
 
 `
 

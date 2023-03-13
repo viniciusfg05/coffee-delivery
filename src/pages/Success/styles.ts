@@ -7,6 +7,12 @@ export const CotainerSyled = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 
+    @media(max-width: 768px) {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        width: 100%;
+    }
+
     header {
         h1 {
             font-size: 2rem;
@@ -26,6 +32,10 @@ export const MainCotentStyled = styled.div`
     justify-content: space-between;
     align-items: end;
 
+    @media(max-width: 768px) {
+        flex-direction: column;
+        width: 100%
+    }
 `
 
 export const InfosPedidoStyled = styled.div`
@@ -61,6 +71,10 @@ export const InfosPedidoStyled = styled.div`
             }
         }
 
+    }
+
+    @media(max-width: 768px) {
+        width: 100%;
     }
 `
 

@@ -2,17 +2,14 @@ import styled from "styled-components";
 
 export const MainContainerStyled = styled.main`
     max-width: 70rem;
-    /* height: 22.5rem; */
+    width: 70rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 0 auto;
     gap: 4.81rem;
     margin-top: 5.875rem;
 
-    @media (max-width: 360px) {
-        grid-template-columns: 1fr;
 
-    }
 
     section {
 
@@ -55,8 +52,41 @@ export const MainContainerStyled = styled.main`
         img {
             flex: 1;
             display: flex;
-            justify-content: end;
+        }
     }
+
+    @media (max-width: 760px) {
+        grid-template-columns: 1fr;
+        margin-top: 1.875rem;
+        width: 100vw;
+        margin: 0 2rem;
+        
+        section {
+            width: 100vw;
+
+            h1 {
+                font-size: 1.75rem;
+                line-height: 2.5rem;
+            }
+
+            ul {
+                width: 100vw;
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            p {
+                margin-bottom: 1.125rem;
+            }
+        }
+        
+        section:last-child{
+
+            img {
+                display: none;
+            }
+        }
+
     }
 `
 
@@ -77,8 +107,18 @@ export const LiContentStyled = styled.i<PropsColor>`
     height: 2rem;
     background: ${(props) => props.theme[PROPS_COLORS[props.propsColor]]};;
     border-radius: 16px;
+    
 
     display: flex;
     justify-content: center;
     align-items: center;
+`
+export const TextStyled = styled.div`
+
+    @media (max-width: 760px) {
+        width: 100vw;
+        width: 2rem;
+        height: 2rem;
+    }
+
 `

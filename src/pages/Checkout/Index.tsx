@@ -34,11 +34,13 @@ export function Checkout() {
     return (
       <>
         <MainContainerStyled>
-          <Inputs />
+          
+          <section>
+            <Inputs />
+            <Payment /> 
+          </section>
 
-            <NoItemCardStyled>No momento você não tem item no carrinho</NoItemCardStyled>
-
-            <Payment />
+          <NoItemCardStyled>No momento você não tem item no carrinho</NoItemCardStyled>
 
         </MainContainerStyled>
       </>
